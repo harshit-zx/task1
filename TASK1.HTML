@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-image: url("https://cdn.pixabay.com/photo/2015/11/05/08/21/geometry-1023846_1280.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+      .calci {
+        /* border: 1px solid rgb(0, 17, 16); */
+        margin: auto;
+        width: fit-content;
+        height: fit-content;
+      }
+      .container {
+        position: relative;
+        /* top:-30px; */
+        transform: scale(0.6);
+        margin: auto;
+        /* padding: 10%; */
+        width: 50vw;
+        height: 60vh;
+        padding: 10px 0px;
+        /* background-color: rgb(254, 255, 253); */
+      }
+
+      button {
+        cursor: pointer;
+        padding: 5%;
+        height: 4%;
+        color: rgb(17, 1, 1);
+        width: 21%;
+        background-color: rgb(229, 232, 239);
+        border: none;
+        box-shadow: -2px -2px 30px 2px black;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 900;
+        font-family: Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      button:hover {
+        box-shadow: -2px -2px 40px 10px black;
+        background-color: rgb(5, 5, 41);
+        color: white;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .gr {
+        color: rgb(23, 2, 2);
+        font-weight: 900;
+      }
+
+      .gr:hover {
+        box-shadow: -1px -1px 40px 7px black;
+        background-color: rgb(9, 0, 12);
+        color: white;
+      }
+
+      .display {
+        width: 95%;
+        margin: auto;
+        height: 45%;
+        border-radius: 10px;
+        background-color: rgb(58, 57, 58);
+        border: none;
+        display: block;
+        outline: none;
+        padding: 10px 10px;
+        box-sizing: border-box;
+        color: white;
+        font-size: 42px;
+      }
+
+      .btn-grp {
+        margin-top: 10px;
+        color: white;
+      }
+
+      input::placeholder {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calci">
+      <div class="container">
+        <input class="display" placeholder="Enter Data..." id="input" />
+        <div class="btn-grp">
+          <div class="row">
+            <button onclick="calci(this.innerHTML)" class="gr">AC</button
+            ><button onclick="calci(this.innerHTML)" class="gr">DE</button
+            ><button onclick="calci(this.innerHTML)" class="gr">%</button
+            ><button onclick="calci(this.innerHTML)" class="gr">/</button>
+          </div>
+          <div class="row">
+            <button onclick="calci(this.innerHTML)">7</button
+            ><button onclick="calci(this.innerHTML)">8</button
+            ><button onclick="calci(this.innerHTML)">9</button
+            ><button onclick="calci(this.innerHTML)" class="gr">*</button>
+          </div>
+          <div class="row">
+            <button onclick="calci(this.innerHTML)">4</button
+            ><button onclick="calci(this.innerHTML)">5</button
+            ><button onclick="calci(this.innerHTML)">6</button
+            ><button onclick="calci(this.innerHTML)" class="gr">-</button>
+          </div>
+          <div class="row">
+            <button onclick="calci(this.innerHTML)">1</button
+            ><button onclick="calci(this.innerHTML)">2</button
+            ><button onclick="calci(this.innerHTML)">3</button
+            ><button onclick="calci(this.innerHTML)" class="gr">+</button>
+          </div>
+          <div class="row">
+            <button onclick="calci(this.innerHTML)">00</button
+            ><button onclick="calci(this.innerHTML)">0</button
+            ><button onclick="calci(this.innerHTML)">.</button
+            ><button onclick="calci(this.innerHTML)" class="gr">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let k = 0;
+      function calci(val) {
+        exp = document.getElementById("input");
+        if (val == "=") {
+          exp.value = eval(exp.value);
+          k++;
+        } else if (val == "AC") {
+          exp.value = "";
+        } else if (val == "DE") {
+          exp.value = exp.value.substring(0, exp.value.length - 1);
+        } else {
+          if (k != 0) {
+            exp.value = "";
+            k = 0;
+          }
+          exp.value += val;
+        }
+      }
+    </script>
+  </body>
+</html>
